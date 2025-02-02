@@ -29,7 +29,7 @@ while (![string]::IsNullOrEmpty($nextLink)) {
 
 # Check for duplicate devices based on serial number, IMEI
 # I do two seperate for each loops for safety, as i don't want to parse $alldevices array directly
-# Check for duplicate devices based on serial number, IMEI, or WiFi MAC address
+# Check for duplicate devices based on serial number, IMEI
 foreach ($device in $allDevices) {
     $imei = $device.imei
     $serialNumber = $device.serialNumber
