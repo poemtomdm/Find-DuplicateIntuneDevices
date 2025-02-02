@@ -31,9 +31,7 @@ while (![string]::IsNullOrEmpty($nextLink)) {
 # I do two seperate for each loops for safety, as i don't want to parse $alldevices array directly
 # Check for duplicate devices based on serial number, IMEI
 foreach ($device in $allDevices) {
-    $imei = $device.imei
     $serialNumber = $device.serialNumber
-    $wifimac = $device.wiFiMacAddress
     $identifier = $serialNumber  # Use serial number as identifier
 
     if ($deviceSerials.ContainsKey($identifier)) {
