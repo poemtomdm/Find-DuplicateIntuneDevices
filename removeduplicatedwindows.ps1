@@ -50,7 +50,7 @@ foreach ($device in $allDevices) {
     }
 }
 
-# I process duplicateDevices hash table instead of alldevices array for safety
+# I process duplicateDevices instead of alldevices array for safety
 foreach ($duplicate in $duplicateDevices) {
     Write-Warning $duplicate.deviceName
     $serial = $duplicate.serialNumber
