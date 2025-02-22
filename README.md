@@ -55,13 +55,13 @@ Microsoft Graph API: The script uses Microsoft Graph API for device management, 
 
 Permissions: The necessary permissions to read and delete devices from Intune and Entra are needed. Ensure that your service principal has the required access rights.
 
-## How It Works:
 
-1 - Authentication: The script authenticates using Microsoft Graph API via a client secret and tenant information.
-2 - Fetching Devices: Devices are fetched from Intune, filtered by the chosen platform (Windows, Android, iOS, macOS).
-3 - Identifying Duplicates: Devices are checked for duplicates based on serial numbers (or IMEI for iOS).
-4 - Generating Reports: A detailed list of duplicates is generated, and you can choose between a CSV or JSON export.
-5 - Cleanup Option: The script allows for removing duplicates, either interactively or with forced deletion.
+## How it works:
+- **Authentication**: Handles device management across multiple platforms (Windows, Android, iOS, macOS).
+- **Fetching Devices**: Outputs detailed information on duplicate devices in either CSV or JSON formats.
+- **Identifying Duplicates**: Allows for a `-ReportOnly` mode to simulate deletions, as well as a `-Force` option to automatically remove duplicate devices without confirmation.
+- **Generating Reports**: In case of deletion, users are prompted for confirmation before any device removal occurs.
+- **Cleanup Option**: Utilizes Microsoft Graph API for real-time device management and deletion.
 
 ## Customization:
 You can modify the script to adjust the device identification logic (e.g., add more fields), change how the duplicates are processed, or customize the reporting format.
