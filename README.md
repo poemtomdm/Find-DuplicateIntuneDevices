@@ -3,7 +3,7 @@
 This PowerShell script helps administrators identify and clean up duplicate devices in Intune managed environments, specifically for platforms like Windows, Android, iOS, and macOS. It leverages Microsoft Graph API to identify devices that share the same serial number or IMEI, and provides a detailed report on these duplicates, allowing for informed decisions about device removal.
 
 ## Goals:
-- **Identify Duplicate Devices**: The script identifies duplicate devices based on IMEI (for iOS) or serial number (for Windows, Android, and macOS).
+- **Identify Duplicate Devices**: The script identifies duplicate devices based on IMEI or serial number, depending on the platform.
 - **Generate Detailed Reports**: The script generates reports that can be exported in both JSON and CSV formats for easy review.
 - **Device Cleanup**: Optionally, the script can delete duplicate devices from Intune and Entra, with confirmation prompts or force deletion for automation.
 - **Flexible Use**: Supports multiple platforms (Windows, Android, iOS, macOS) and various reporting options for better management and auditing.
