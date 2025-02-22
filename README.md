@@ -23,3 +23,10 @@ To identify duplicate devices and generate a report in JSON format without perfo
 
 ```powershell
 .\Find-DuplicateIntuneDevices.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -ClientSecret "your-client-secret" -Platform "Windows" -ReportOnly -JsonOutput
+
+### 2. **Generate CSV Report and Delete Devices**
+
+To generate a CSV report of duplicate devices and delete them:
+
+```powershell
+.\Find-DuplicateIntuneDevices.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -ClientSecret "your-client-secret" -Platform "Android" -CsvOutput -Force
