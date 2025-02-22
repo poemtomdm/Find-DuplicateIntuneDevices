@@ -40,11 +40,11 @@ foreach ($device in $allDevices) {
     $serialNumber = $device.serialNumber
     $identifier = $null
 
-    if ($Platform -eq "Windows" -or $Platform -eq "Android" -or $Platform -eq "macOS") {
+    if ($Platform -eq "Windows" -or $Platform -eq "macOS") {
         if ($serialNumber -ne $null -and $serialNumber -ne "" -and $serialNumber -ne "serialnumber" -and $serialNumber -ne "0" -and $serialNumber -ne "Defaultstring") {
             $identifier = $serialNumber
         }
-    } elseif ($Platform -eq "iOS") {
+    } elseif ($Platform -eq "iOS" -or $Platform -eq "Android") {
         if ($imei -ne $null -and $imei -ne "") {
             $identifier = $imei
         } elseif ($serialNumber -ne $null -and $serialNumber -ne "" -and $serialNumber -ne "0" -and $serialNumber -ne "serialnumber") {
