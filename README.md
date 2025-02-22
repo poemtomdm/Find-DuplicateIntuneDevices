@@ -41,7 +41,7 @@ This will fetch Android devices from Intune, identify duplicates, generate a CSV
 If you want to review the devices before deletion, run the script without -Force, and you'll be prompted to confirm deletion:
 
 ```powershell
-.\Find-DuplicateIntuneDevices.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -ClientSecret "your-client-secret" -Platform "macOS" -ReportOnly
+.\Find-DuplicateIntuneDevices.ps1 -TenantId "your-tenant-id" -ClientId "your-client-id" -ClientSecret "your-client-secret" -Platform "macOS"
 ```
 
 
