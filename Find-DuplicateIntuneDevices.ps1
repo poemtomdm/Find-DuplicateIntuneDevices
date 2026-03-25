@@ -71,14 +71,25 @@ foreach ($duplicate in $duplicateDevices) {
     $uri = "https://graph.microsoft.com/beta/devicemanagement/manageddevices?`$filter=$filterField eq '$filterValue'"
     $response = Invoke-MgGraphRequest -Uri $uri -Method GET
 
-    # Sort duplicates by last sync date and skip the most recent one
-    $duplicatessorted = $response.value | Sort-Object lastsyncdatetime -Descending | Select-Object -Skip 1
+    # Sort duplicates by lastSyncDateTime as real DateTime (safe handling)
+    $duplicatessorted = $response.value | Sort-Object `
+        @{Expression = {
+            if ($_.lastSyncDateTime) {
+                [datetime]$_.lastSyncDateTime
+            } else {
+                [datetime]"1900-01-01"
+            }
+        }; Descending = $true}
 
-    foreach ($duplicatesorted in $duplicatessorted) {
+    # Keep the most recent, delete the rest
+    $toDelete = $duplicatessorted | Select-Object -Skip 1
+
+    foreach ($duplicatesorted in $toDelete) {
         $result += [PSCustomObject]@{
             DeviceName     = $duplicatesorted.deviceName
             IntuneID       = $duplicatesorted.id
             EntraObjectID  = $duplicatesorted.azureADDeviceId
+            LastSync       = $duplicatesorted.lastSyncDateTime
         }
     }
 }
